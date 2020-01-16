@@ -1,5 +1,5 @@
 import { ResasApiError } from "./ResasApiError";
-import { Prefecture, Populations } from "./entites";
+import { Prefecture, Population } from "./entites";
 
 export class ResasApiService {
   private endpoint = "https://opendata.resas-portal.go.jp";
@@ -44,7 +44,7 @@ export class ResasApiService {
   populationCompositionPerYear = async (
     prefCode: number,
     cityCode: string = "-",
-    addArea?: { prefCode: number, cityCode?: string }[]): Promise<Populations> => {
+    addArea?: { prefCode: number, cityCode?: string }[]): Promise<Population> => {
     const params = new URLSearchParams();
     params.append("prefCode", String(prefCode));
     params.append("cityCode", cityCode);

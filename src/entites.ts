@@ -3,17 +3,17 @@ export interface Prefecture {
   prefName: string,
 }
 
-export interface Population {
+export interface PopulationPerYear {
   year: number,
   value: number,
   rate?: number,
 }
 
-export interface Populations {
+export interface Population {
   boundaryYear: number,
   data: {
     label: string,
-    data: Population[],
+    data: PopulationPerYear[],
   }[],
 }
 
