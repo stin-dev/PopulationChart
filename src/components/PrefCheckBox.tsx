@@ -9,14 +9,16 @@ interface Props {
 
 export const PrefCheckBox: React.FC<Props> = (props) => {
   return (
-    <div  className={props.className}>
+    <div
+      className={props.className}
+      onClick={props.onClick}>
       <input
         type="checkbox"
         checked={props.checked}
-        onClick={props.onClick}
-        readOnly
-      />
-      <span>{props.prefName}</span>
+        readOnly />
+      <span style={{ paddingLeft: "0.5rem" }}>
+        {props.prefName}
+      </span>
     </div>
   )
 }
