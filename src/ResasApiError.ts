@@ -1,8 +1,8 @@
 export class ResasApiError extends Error {
   constructor(
     public statusCode: number,
-    public message: string,
+    public description: string,
   ) {
-    super(`${statusCode}: ${message}`);
+    super(`${statusCode} : ${description}`);
   }
 }
