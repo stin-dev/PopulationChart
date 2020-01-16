@@ -6,14 +6,13 @@ import { ResasApiError } from './ResasApiError';
 const resasApiService = new ResasApiService("25BO76EGI4g8ugQJGIAqzWk93rVrWVxZuxW02TJp");
 
 export default () => {
-  const [prefectures, setPrefectures] = React.useState<Prefecture[]>([]);
   const [checkedPrefs, setCheckedPrefs] = React.useState<{ prefecture: Prefecture, checked: boolean }[]>([]);
   const [populations, setPopulations] = React.useState<{ prefecture: Prefecture, population: Population }[]>([]);
   const [apiError, setApiError] = React.useState<ResasApiError>();
 
   React.useEffect(() => {
     resasApiService.prefectures()
-      .then(prefs => setPrefectures(prefs))
+      .then(prefs => setCheckedPrefs(prefs.map(pref => ({ prefecture: pref, checked: false }))))
       .catch(error => {
         if (error instanceof ResasApiError) {
           setApiError(error);
@@ -22,10 +21,6 @@ export default () => {
         }
       });
   }, []);
-
-  React.useEffect(() => {
-    setCheckedPrefs(prefectures.map(pref => ({ prefecture: pref, checked: false })));
-  }, [prefectures]);
 
   React.useEffect(() => {
     const promisePopulations = checkedPrefs
