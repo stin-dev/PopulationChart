@@ -10,27 +10,27 @@ export class ResasApiService {
     const url = params ? `${this.endpoint}/${apiPath}?${params}` : `${this.endpoint}/${apiPath}`;
 
     const response = await fetch(url, { headers: { "X-API-KEY": this.apiKey } });
-
+    
     if (response.status >= 500 && response.status < 600) {
       throw new ResasApiError(response.status, "RESAS Server Error");
     }
 
-    if (response.status === 429) {
-      throw new ResasApiError(response.status, "Too Many Requests");
-    }
-
     const resObj = await response.json();
 
+    if (response.status === 429 || resObj === "429" || resObj.statusCode === "429") {
+      throw new ResasApiError(429, "Too Many Requests");
+    }
+
     if (resObj === "400") {
-      throw new ResasApiError(response.status, "Bad Request");
+      throw new ResasApiError(400, "Bad Request");
     }
 
     if (resObj.statusCode === "403") {
-      throw new ResasApiError(response.status, "Forbidden");
+      throw new ResasApiError(403, "Forbidden");
     }
 
     if (resObj === "404" || resObj.statusCode === "404") {
-      throw new ResasApiError(response.status, "Not Found");
+      throw new ResasApiError(404, "Not Found");
     }
 
     return resObj;
