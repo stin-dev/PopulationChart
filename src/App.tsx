@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { PrefCheckBox } from './components/PrefCheckBox';
 import useAppState from "./AppState";
+import { PopulationChart } from './PopulationChart';
 
 const App: React.FC = () => {
   const { checkedPrefs, checkboxClickHandler, populations, apiError } = useAppState();
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           ))}
         </div>
         {apiError && <p className="ErrorMessage">{apiError.message}</p>}
+        <PopulationChart />
       </div>
     </div>
   );
