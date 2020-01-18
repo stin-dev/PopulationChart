@@ -32,7 +32,7 @@ export default () => {
           setPopulations(prev => prev.filter(state =>
             state.prefecture.prefCode !== changedState.prefecture.prefCode));
         } else {
-          // It will be checked. So add it from `populations` state.
+          // It will be checked. So add it to `populations` state.
           resasApiService.populationCompositionPerYear(changedState.prefecture.prefCode)
             .then(population => {
               setPopulations(prev => prev.concat({
