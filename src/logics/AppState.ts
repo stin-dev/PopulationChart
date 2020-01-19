@@ -40,7 +40,6 @@ export default () => {
 
       return accum;
     }, []);
-    console.log(JSON.stringify(newChartData));
     setChartData(newChartData);
   }, [populations]);
 
