@@ -1,0 +1,17 @@
+.PrefCheckBox-root {
+  display: inline-block;
+  min-width: 90px;
+  padding: 2px 12px;
+  border-radius: 8px;
+  border: black 1px solid;
+  cursor: pointer;
+}
+
+.PrefCheckBox-root-checked {
+  color: white;
+  background-color: #2ccf9e;
+}
+
+.PrefCheckBox-checkbox {
+  display: none;
+}
