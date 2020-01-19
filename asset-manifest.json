@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/PopulationChart/static/css/main.23970cf6.chunk.css",
+    "main.js": "/PopulationChart/static/js/main.f3e6104e.chunk.js",
+    "main.js.map": "/PopulationChart/static/js/main.f3e6104e.chunk.js.map",
+    "runtime-main.js": "/PopulationChart/static/js/runtime-main.4932f899.js",
+    "runtime-main.js.map": "/PopulationChart/static/js/runtime-main.4932f899.js.map",
+    "static/js/2.64059b84.chunk.js": "/PopulationChart/static/js/2.64059b84.chunk.js",
+    "static/js/2.64059b84.chunk.js.map": "/PopulationChart/static/js/2.64059b84.chunk.js.map",
+    "index.html": "/PopulationChart/index.html",
+    "precache-manifest.286833ac71bbb723b658803718e061b2.js": "/PopulationChart/precache-manifest.286833ac71bbb723b658803718e061b2.js",
+    "service-worker.js": "/PopulationChart/service-worker.js",
+    "static/css/main.23970cf6.chunk.css.map": "/PopulationChart/static/css/main.23970cf6.chunk.css.map",
+    "static/js/2.64059b84.chunk.js.LICENSE": "/PopulationChart/static/js/2.64059b84.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4932f899.js",
+    "static/js/2.64059b84.chunk.js",
+    "static/css/main.23970cf6.chunk.css",
+    "static/js/main.f3e6104e.chunk.js"
+  ]
+}
