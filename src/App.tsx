@@ -1,38 +1,36 @@
 import React from 'react';
+import { Grid } from "@material-ui/core";
 import './App.css';
 import { PrefCheckBox } from './components/PrefCheckBox';
 import useAppState from "./AppState";
 import { PopulationChart } from './PopulationChart';
 
 const App: React.FC = () => {
-  const { checkedPrefs, checkboxClickHandler, populations, apiError } = useAppState();
+  const { checkedPrefs, checkboxClickHandler, chartData, apiError } = useAppState();
 
   return (
     <div className="App">
-      <div className="AppContainer">
+      <div className="App-container">
         <header>
           <h1>Population Chart</h1>
         </header>
-        <div className="PrefCheckBoxContainer">
+        <Grid container spacing={1}>
           {checkedPrefs.map(checkedPref => (
-            <PrefCheckBox
+            <Grid item
               key={checkedPref.prefecture.prefCode}
-              checked={checkedPref.checked}
-              prefName={checkedPref.prefecture.prefName}
-              onClick={checkboxClickHandler(checkedPref.prefecture.prefCode)}
-            />
+              xs={4} sm={3} md={2}
+            >
+              <PrefCheckBox className="PrefCheckBox"
+                checked={checkedPref.checked}
+                prefName={checkedPref.prefecture.prefName}
+                onClick={checkboxClickHandler(checkedPref.prefecture.prefCode)}
+              />
+            </Grid>
           ))}
-        </div>
-        <div>
-          {populations.map(population => (
-            <React.Fragment key={population.prefecture.prefCode}>
-              <p>{`${population.prefecture.prefCode}: ${population.prefecture.prefName}`}</p>
-              <p>{JSON.stringify(population.population.data[0].data[0])}</p>
-            </React.Fragment>
-          ))}
-        </div>
+        </Grid>
         {apiError && <p className="ErrorMessage">{apiError.message}</p>}
-        <PopulationChart />
+        <div className="App-blank" />
+        <PopulationChart data={chartData} />
       </div>
     </div>
   );

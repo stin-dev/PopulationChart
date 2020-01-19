@@ -17,3 +17,7 @@ export interface Population {
   }[],
 }
 
+export interface ChartData {
+  year: number,
+  [prefName: string]: number,
+}

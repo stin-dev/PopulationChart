@@ -1,25 +1,31 @@
 .App {
   text-align: center;
-  background-color: #282c34;
 }
 
-.AppContainer {
+.App-container {
   max-width: 900px;
+  padding: 0px 10px;
   margin: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(8px + 2vmin);
 }
 
-.PrefCheckBoxContainer {
-  display: flex;
-  flex-wrap: wrap;
+.App-blank {
+  height: 20px;
+}
+
+.PrefCheckBox {
+  width: 100%;
 }
 
 .ErrorMessage {
   color: #d50000;
+}
+
+.Chart-container {
+  margin-top: 20px;
 }

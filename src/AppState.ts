@@ -1,5 +1,5 @@
 import React from 'react';
-import { Prefecture, Population } from './entites';
+import { Prefecture, Population, ChartData } from './entites';
 import { ResasApiService } from './ResasApiService';
 import { ResasApiError } from './ResasApiError';
 
@@ -8,7 +8,7 @@ const resasApiService = new ResasApiService("25BO76EGI4g8ugQJGIAqzWk93rVrWVxZuxW
 export default () => {
   const [checkedPrefs, setCheckedPrefs] = React.useState<{ prefecture: Prefecture, checked: boolean }[]>([]);
   const [populations, setPopulations] = React.useState<{ prefecture: Prefecture, population: Population }[]>([]);
-  const [chartData, setChartData] = React.useState<Object[]>([]);
+  const [chartData, setChartData] = React.useState<ChartData[]>([]);
   const [apiError, setApiError] = React.useState<ResasApiError>();
 
   React.useEffect(() => {
@@ -22,6 +22,27 @@ export default () => {
         }
       });
   }, []);
+
+  React.useEffect(() => {
+    const newChartData = populations.reduce<ChartData[]>((accum, current) => {
+      // Population.data[0].label is equal to "総人口".
+      current.population.data[0].data.forEach(d => {
+        const objectYear = accum.find(a => a.year === d.year);
+        if (objectYear) {
+          objectYear[current.prefecture.prefName] = d.value;
+        } else {
+          accum.push({
+            year: d.year,
+            [current.prefecture.prefName]: d.value,
+          });
+        }
+      });
+
+      return accum;
+    }, []);
+    console.log(JSON.stringify(newChartData));
+    setChartData(newChartData);
+  }, [populations]);
 
   const checkboxClickHandler = (prefCode: number) => () => {
     setCheckedPrefs(prev => {
@@ -66,7 +87,7 @@ export default () => {
   return {
     checkedPrefs,
     apiError,
-    populations,
+    chartData,
     checkboxClickHandler,
   }
 }
