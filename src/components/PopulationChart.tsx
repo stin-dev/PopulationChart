@@ -2,8 +2,8 @@ import React from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
-import { randomColor } from './randomColor';
-import { ChartData } from './entites';
+import { randomColor } from '../utils/randomColor';
+import { ChartData } from '../logics/entites';
 
 export const PopulationChart: React.FC<{ data: ChartData[] }> = (props) => {
   return (

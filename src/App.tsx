@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid } from "@material-ui/core";
 import './App.css';
 import { PrefCheckBox } from './components/PrefCheckBox';
-import useAppState from "./AppState";
-import { PopulationChart } from './PopulationChart';
+import { PopulationChart } from './components/PopulationChart';
+import useAppState from "./logics/AppState";
 
 const App: React.FC = () => {
   const { checkedPrefs, checkboxClickHandler, chartData, apiError } = useAppState();
